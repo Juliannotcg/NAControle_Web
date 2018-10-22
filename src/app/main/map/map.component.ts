@@ -2,6 +2,8 @@ import { ElementRef, NgZone, OnInit, ViewChild, Component } from '@angular/core'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent } from '@agm/core';
+import { Marker } from '@agm/core/services/google-maps-types';
+import { marker } from './map.model';
 
 @Component({
     selector     : 'map',
@@ -43,6 +45,29 @@ export class AppComponent implements OnInit
         pesquisaMap: {},
       };
   }
+
+  markers: marker[] = [
+    {
+        latitude: 51.673858,
+        longitude: 7.815982,
+        label: 'A',
+        draggable: true,
+        iconUrl: './favicon.ico'
+    },
+    {
+        latitude: 51.373858,
+        longitude: 7.215982,
+        label: 'B',
+        draggable: false,
+        iconUrl: './favicon.ico'
+    },
+    {
+        latitude: 51.723858,
+        longitude: 7.895982,
+        label: 'C',
+        draggable: true,
+        iconUrl: './favicon.ico'
+    }]
 
   ngOnInit() 
   {
@@ -112,35 +137,5 @@ export class AppComponent implements OnInit
       });
     }
   }
-
-  markers: marker[] = [
-    {
-        latitude: 51.673858,
-        longitude: 7.815982,
-        label: 'A',
-        draggable: true,
-        iconUrl: './favicon.ico'
-    },
-    {
-        latitude: 51.373858,
-        longitude: 7.215982,
-        label: 'B',
-        draggable: false,
-        iconUrl: './favicon.ico'
-    },
-    {
-        latitude: 51.723858,
-        longitude: 7.895982,
-        label: 'C',
-        draggable: true,
-        iconUrl: './favicon.ico'
-    }
-]}
-
-interface marker {
-	latitude: number;
-	longitude: number;
-	label?: string;
-    draggable: boolean;
-    iconUrl: string;
 }
+
