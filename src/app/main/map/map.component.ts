@@ -1,5 +1,5 @@
 import { ElementRef, NgZone, OnInit, ViewChild, Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent } from '@agm/core';
 
@@ -9,7 +9,13 @@ import { MouseEvent } from '@agm/core';
     styleUrls    : ['./map.component.scss'],
   })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit 
+{
+
+  form: FormGroup;
+  formErrors: any;
+  horizontalStepperStep1Errors: any;
+  verticalStepperStep1Errors: any;
 
   public latitude: number;
   public longitude: number;
@@ -20,11 +26,38 @@ export class AppComponent implements OnInit {
   public searchElementRef: ElementRef;
 
   constructor(
+    private formBuilder: FormBuilder,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone
-  ) {}
+  ) 
+      {
+        this.formErrors = {
+          pesquisaMap   : {}
+      };
 
-  ngOnInit() {
+      this.horizontalStepperStep1Errors = {
+        pesquisaMap: {}
+      }; 
+
+      this.verticalStepperStep1Errors = {
+        pesquisaMap: {},
+      };
+  }
+
+  ngOnInit() 
+  {
+
+      this.form = this.formBuilder.group({
+        company   : [
+            {
+                value   : 'Google',
+                disabled: true
+            }, Validators.required
+        ],
+        pesquisaMap : ['', Validators.required]
+    });
+
+
     //set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;

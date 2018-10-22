@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './map.component';
 import { Routes, RouterModule } from '@angular/router';
+import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 
 const routes: Routes = [
     {
@@ -14,10 +15,14 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+
     AgmCoreModule.forRoot({
       apiKey: "AIzaSyDbeOCn3WjCEYpumjea7OcT2rIX5Ulk06Q",
       libraries: ["places"]
     }),
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forChild(routes),
     BrowserModule,
     FormsModule,
