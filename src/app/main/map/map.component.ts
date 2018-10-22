@@ -2,8 +2,7 @@ import { ElementRef, NgZone, OnInit, ViewChild, Component } from '@angular/core'
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent } from '@agm/core';
-import { Marker } from '@agm/core/services/google-maps-types';
-import { marker } from './map.model';
+import { Marker } from './map.model';
 
 @Component({
     selector     : 'map',
@@ -13,7 +12,6 @@ import { marker } from './map.model';
 
 export class AppComponent implements OnInit 
 {
-
   form: FormGroup;
   formErrors: any;
   horizontalStepperStep1Errors: any;
@@ -46,7 +44,7 @@ export class AppComponent implements OnInit
       };
   }
 
-  markers: marker[] = [
+  markers: Marker[] = [
     {
         latitude: 51.673858,
         longitude: 7.815982,
