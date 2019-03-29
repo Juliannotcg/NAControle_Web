@@ -2,22 +2,24 @@ import { AgmCoreModule } from '@agm/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppComponent } from './map.component';
+import { MapComponent } from './map.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule } from '@angular/material';
+import { MapService } from './map.service';
+
 
 const routes: Routes = [
     {
         path      : 'map',
-        component: AppComponent
+        component: MapComponent
     }
 ];
 
 @NgModule({
   imports: [
-
+    RouterModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDbeOCn3WjCEYpumjea7OcT2rIX5Ulk06Q",
+      apiKey: "AIzaSyDryBws_KN0rstpvoaihKGxLBGgxEnQtTY",
       libraries: ["places"]
     }),
     MatButtonModule,
@@ -26,8 +28,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
-  declarations: [ AppComponent ]
+  providers: [MapService],
+  declarations: [ MapComponent ]
 })
 export class MapModule {}

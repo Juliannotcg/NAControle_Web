@@ -1,8 +1,9 @@
-import { ElementRef, NgZone, OnInit, ViewChild, Component } from '@angular/core';
+import { Component, ElementRef, NgZone, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import { MouseEvent } from '@agm/core';
 import { Marker } from './map.model';
+import { MapService } from './map.service';
 
 @Component({
     selector     : 'map',
@@ -10,7 +11,7 @@ import { Marker } from './map.model';
     styleUrls    : ['./map.component.scss'],
   })
 
-export class AppComponent implements OnInit 
+export class MapComponent implements OnInit 
 {
   form: FormGroup;
   formErrors: any;
@@ -28,21 +29,13 @@ export class AppComponent implements OnInit
   constructor(
     private formBuilder: FormBuilder,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private mapService: MapService
   ) 
-      {
-        this.formErrors = {
-          pesquisaMap   : {}
-      };
-
-      this.horizontalStepperStep1Errors = {
-        pesquisaMap: {}
-      }; 
-
-      this.verticalStepperStep1Errors = {
-        pesquisaMap: {},
-      };
+  {
   }
+
+   mark: any;
 
   markers: Marker[] = [
     {
@@ -70,6 +63,11 @@ export class AppComponent implements OnInit
   ngOnInit() 
   {
 
+      this.mapService.getMarkers().then(test => 
+        {
+          this.markers = this.markers.concat(test);
+        });
+
       this.form = this.formBuilder.group({
         company   : [
             {
@@ -79,18 +77,11 @@ export class AppComponent implements OnInit
         ],
         pesquisaMap : ['', Validators.required]
     });
-
-
-    //set google maps defaults
     this.zoom = 4;
     this.latitude = 39.8282;
     this.longitude = -98.5795;
 
-    //create search FormControl
     this.searchControl = new FormControl();
-
-   
-    //set current position
     this.setCurrentPosition();
 
     //load Places Autocomplete

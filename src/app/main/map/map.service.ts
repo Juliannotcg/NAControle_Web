@@ -14,7 +14,7 @@ export class MapService
 {
     onTipoDocumentoChanged: BehaviorSubject<any> = new BehaviorSubject([]);
     onSearchTextChanged:  Subject<any> = new Subject();
-    tiposDocumento: Marker[];
+    marcadores: Marker[];
 
     searchText: string;
 
@@ -23,66 +23,66 @@ export class MapService
     {
     }
 
-    get(): Promise<any>
+    getMarkers(): Promise<any>
     {
         return new Promise((resolve, reject) => {
                 this.http
-                    .get(environment.api + 'api/TipoDocumento')
+                    .get(environment.api + '/api/values')
                     .subscribe((response: any) =>
                     {
-                        this.tiposDocumento = response;
-                        this.onTipoDocumentoChanged.next(this.tiposDocumento);
-                        resolve(this.tiposDocumento);
+                        this.marcadores = response;
+                        this.onTipoDocumentoChanged.next(this.marcadores);
+                        resolve(this.marcadores);
                     }, reject);
             }
         );
     }
 
-    add(tipoDocumento): Promise<any>
-    {
-        return new Promise((resolve, reject) => {
+    // add(tipoDocumento): Promise<any>
+    // {
+    //     return new Promise((resolve, reject) => {
 
-            this.http.post(environment.api + 'api/TipoDocumento', {...tipoDocumento})
-                .subscribe(response => {
-                    this.get();
+    //         this.http.post(environment.api + 'api/TipoDocumento', {...tipoDocumento})
+    //             .subscribe(response => {
+    //                 this.get();
 
-                    this.openSnackBar(response);
+    //                 this.openSnackBar(response);
 
-                    resolve(response);
-                });
-        });
-    }
+    //                 resolve(response);
+    //             });
+    //     });
+    // }
 
-    update(tipoDocumento): Promise<any>
-    {
-        return new Promise((resolve, reject) => {
+    // update(tipoDocumento): Promise<any>
+    // {
+    //     return new Promise((resolve, reject) => {
 
-            this.http.put(environment.api + 'api/TipoDocumento', {...tipoDocumento})
-                .subscribe(response => {
-                    this.get();
+    //         this.http.put(environment.api + 'api/TipoDocumento', {...tipoDocumento})
+    //             .subscribe(response => {
+    //                 this.get();
 
-                    this.openSnackBar(response);
+    //                 this.openSnackBar(response);
 
-                    resolve(response);
-                });
-        });
-    }
+    //                 resolve(response);
+    //             });
+    //     });
+    // }
 
-    delete(tipoDocumento): Promise<any> 
-    {
-        return new Promise((resolve, reject) => {
+    // delete(marcadores): Promise<any> 
+    // {
+    //     return new Promise((resolve, reject) => {
 
-            this.http.delete(environment.api + 'api/TipoDocumento/' + tipoDocumento.id)
-                .subscribe(response => {
-                    this.tiposDocumento.splice(this.tiposDocumento.indexOf(tipoDocumento), 1);
-                    this.onTipoDocumentoChanged.next(this.tiposDocumento);
+    //         this.http.delete(environment.api + 'api/TipoDocumento/' + tipoDocumento.id)
+    //             .subscribe(response => {
+    //                 this.marcadores.splice(this.marcadores.indexOf(tipoDocumento), 1);
+    //                 this.onTipoDocumentoChanged.next(this.marcadores);
 
-                    this.openSnackBar(response);
+    //                 this.openSnackBar(response);
 
-                    resolve(response);
-                });
-        });
-    }
+    //                 resolve(response);
+    //             });
+    //     });
+    // }
 
 
     openSnackBar(response: any): void

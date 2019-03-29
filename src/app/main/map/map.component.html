@@ -1,10 +1,14 @@
+
+  
 <div class="container">
     <h1>Encontrar de grupos</h1>
 
+    <form [formGroup]="form">
     <mat-form-field fxFlex="500">
         <input matInput placeholder="Pesquisar grupos" formControlName="pesquisaMap"
         autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
     </mat-form-field>
+    </form>
     
     <agm-map 
   [latitude]="latitude"
@@ -32,13 +36,7 @@
     </agm-info-window>
     
   </agm-marker>
-  
-  <agm-circle [latitude]="latitude + 0.3" [longitude]="longitude" 
-      [radius]="5000"
-      [fillColor]="'red'"
-      [circleDraggable]="true"
-      [editable]="true">
-  </agm-circle>
-
 </agm-map>
 </div>
+
+
