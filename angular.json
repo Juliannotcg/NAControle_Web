@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "fuse": {
+        "grupoNa": {
             "root": "",
             "sourceRoot": "src",
             "projectType": "application",
@@ -29,7 +29,8 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": []
+                        "scripts": [],
+                        "showCircularDependencies": false
                     },
                     "configurations": {
                         "production": {
@@ -47,34 +48,62 @@
                             "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
-                            "buildOptimizer": true
-                        }
-                    }
-                },
-                "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "fuse:build"
-                    },
-                    "configurations": {
-                        "production": {
-                            "browserTarget": "fuse:build:production"
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "ec": {
+                            "sourceMap": true,
+                            "extractCss": true
                         },
                         "hmr": {
-                            "hmr": true,
                             "fileReplacements": [
                                 {
                                     "replace": "src/environments/environment.ts",
                                     "with": "src/environments/environment.hmr.ts"
                                 }
                             ]
+                        },
+                        "qa-local": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "src/environments/environment.ts",
+                                    "with": "src/environments/environment.qa-local.ts"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "grupoNa:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "grupoNa:build:production"
+                        },
+                        "hmr": {
+                            "hmr": true,
+                            "browserTarget": "grupoNa:build:hmr"
+                        },
+                        "ec": {
+                            "browserTarget": "grupoNa:build:ec"
+                        },
+                        "qa-local": {
+                            "browserTarget": "grupoNa:build:qa-local"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "fuse:build"
+                        "browserTarget": "grupoNa:build"
                     }
                 },
                 "test": {
@@ -85,7 +114,7 @@
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
                         "styles": [
-                            "styles.scss"
+                            "src/styles.scss"
                         ],
                         "scripts": [],
                         "assets": [
@@ -108,15 +137,21 @@
                 }
             }
         },
-        "fuse-e2e": {
+        "grupoNa-e2e": {
             "root": "e2e/",
             "projectType": "application",
+            "prefix": "",
             "architect": {
                 "e2e": {
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "fuse:serve"
+                        "devServerTarget": "grupoNa:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "grupoNa:serve:production"
+                        }
                     }
                 },
                 "lint": {
@@ -131,5 +166,5 @@
             }
         }
     },
-    "defaultProject": "fuse"
+    "defaultProject": "grupoNa"
 }

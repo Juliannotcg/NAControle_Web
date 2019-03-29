@@ -4,14 +4,25 @@
         "directive-selector": [
             true,
             "attribute",
-            "fuse",
+            [
+                "",
+                "grupoNa",
+                "fuse"
+            ],
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "fuse",
-            "kebab-case"
+            [
+                "",
+                "grupoNa",
+                "fuse"
+            ],
+            [
+                "kebab-case",
+                "camelCase"
+            ]
         ]
     }
 }

@@ -1,6 +1,6 @@
 {
     "rulesDirectory": [
-        "node_modules/codelyzer"
+        "codelyzer"
     ],
     "rules": {
         "arrow-return-shorthand": true,
@@ -89,6 +89,11 @@
         "triple-equals": [
             true,
             "allow-null-check"
+        ],
+        "typedef": [
+            true,
+            "call-signature",
+            "property-declaration"
         ],
         "typedef-whitespace": [
             true,

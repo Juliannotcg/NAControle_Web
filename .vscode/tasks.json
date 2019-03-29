@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "[ng serve]",
+            "command": "ng serve",
+            "type": "process"
+        },
+        {
+            "label": "[dc build dev]",
+            "type": "shell",
+            "command": "docker build -t grupoNaui:dev . --no-cache"
+        },
+        {
+            "label": "[dc build qa]",
+            "type": "shell",
+            "command": "docker build -t grupoNaui:qa . --no-cache"
+        }
+    ]
+}
