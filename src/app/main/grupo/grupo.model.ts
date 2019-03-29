@@ -4,14 +4,21 @@ export class Grupo
 {
     id: string;
     nome: string;
-    sigla: string;
+    latitude: number;
+    longitude: number;
+    label?: string;
+    draggable: boolean;
+    iconUrl: string;
 
     constructor(grupo)
     {
         {
             this.id = grupo.id || '';
             this.nome = grupo.nome || '';
-            this.sigla = grupo.sigla || '';
+            this.latitude = grupo.latitude || '';
+            this.longitude = grupo.longitude || '';
+            this.label = grupo.label || '';
+            this.iconUrl = grupo.iconUrl || '';
         }
     }
 }
