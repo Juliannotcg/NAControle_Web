@@ -22,12 +22,13 @@ import {
 } from '@angular/material';
 
 import { FuseSharedModule } from '@fuse/shared.module';
-import { FuseConfirmDialogModule, FuseSearchBarModule } from '@fuse/components';
+import { FuseConfirmDialogModule, FuseSearchBarModule, FuseSidebarModule } from '@fuse/components';
 
 import { GrupoService } from './grupo.service';
 import { GrupoComponent } from './grupo.component';
 import { GrupoFormDialogComponent } from './grupo-form/grupo-form.component';
 import { GrupoListComponent } from './grupo-list/grupo-list.component';
+import { FuseProgressBarModule } from '@fuse/components/progress-bar/progress-bar.module';
 
 
 const routes: Routes = [
@@ -66,8 +67,8 @@ const routes: Routes = [
         MatSortModule,
         FuseSearchBarModule,
         MatTooltipModule,
-
-
+        FuseSidebarModule,
+        FuseProgressBarModule,
         FuseSharedModule,
         FuseConfirmDialogModule
     ],

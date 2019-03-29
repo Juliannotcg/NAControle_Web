@@ -13,6 +13,7 @@ import { FuseToolbarModule } from 'app/main/toolbar/toolbar.module';
 
 import { FuseMainComponent } from './main.component';
 import { MapModule } from './map/map.module';
+import { GrupoModule } from './grupo/grupo.module';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MapModule } from './map/map.module';
         FuseNavbarModule,
         FuseQuickPanelModule,
         FuseToolbarModule,
+        GrupoModule
         
     ],
     exports     : [

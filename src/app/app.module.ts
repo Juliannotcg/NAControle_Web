@@ -16,7 +16,6 @@ import { FuseMainModule } from './main/main.module';
 import { FuseSampleModule } from './main/content/sample/sample.module';
 import { MapModule } from './main/map/map.module';
 import { GrupoModule } from './main/grupo/grupo.module';
-
 const appRoutes: Routes = [
     {
         path      : '**',

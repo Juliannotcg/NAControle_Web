@@ -38,8 +38,7 @@ export class GrupoListComponent implements OnInit
 
     constructor(
         private grupoService: GrupoService,
-        public dialog: MatDialog,
-        private _searchBarService: SearchBarService
+        public dialog: MatDialog
     )
     {
         this._unsubscribeAll = new Subject();
@@ -63,10 +62,7 @@ export class GrupoListComponent implements OnInit
                 this.dataSource.filter = filter;
             });
 
-            this._searchBarService
-                    .searchBar
-                    .pipe(takeUntil(this._unsubscribeAll))
-                    .subscribe(value => this.dataSource.filter = value);
+         
     }
 
     editOrgaoEmissor(grupo): void

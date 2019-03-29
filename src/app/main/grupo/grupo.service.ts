@@ -18,7 +18,7 @@ export class GrupoService implements Resolve<any>
 
     searchText: string;
 
-    private apiRoute = `${environment.api}api/orgaoEmissor`;
+    private apiRoute = `${environment.api}api/values`;
 
     constructor(
         private http: HttpClient,
@@ -50,11 +50,11 @@ export class GrupoService implements Resolve<any>
         );
     }
 
-    add(orgaoEmissor)
+    add(grupo)
     {
         return new Promise((resolve, reject) => {
 
-            this.http.post(this.apiRoute, {...orgaoEmissor})
+            this.http.post(this.apiRoute, {...grupo})
                 .subscribe(response => {
                     this.get();
 
@@ -65,10 +65,10 @@ export class GrupoService implements Resolve<any>
         });
     }
 
-    update(orgaoEmissor): any {
+    update(grupo): any {
         return new Promise((resolve, reject) => {
 
-            this.http.put(this.apiRoute, {...orgaoEmissor})
+            this.http.put(this.apiRoute, {...grupo})
                 .subscribe(response => {
                     this.get();
 
