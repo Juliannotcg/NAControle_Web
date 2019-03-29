@@ -1,0 +1,12 @@
+<div id="grupo" class="page-layout carded fullwidth" fusePerfectScrollbar>
+    <div class="center pr-sm-92">
+			<grupo-list class="content-card mat-white-bg mat-elevation-z4"></grupo-list>
+    </div>
+</div>
+
+<!-- ADD CONTACT BUTTON -->
+<button mat-fab class="mat-accent-bg" [ngClass]="fuseConfig.layout.toolbar.background" id="add-grupo-button" (click)="newGrupo()" aria-label="add contact"
+        *fuseIfOnDom [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}">
+    <mat-icon>add</mat-icon>
+</button>
+<!-- / ADD CONTACT BUTTON -->
