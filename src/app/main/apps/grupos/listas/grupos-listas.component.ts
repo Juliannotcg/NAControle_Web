@@ -20,13 +20,10 @@ import { GruposInMemoryService } from '../grupos-in-memory.service';
 export class GruposListasComponent implements OnInit, OnDestroy
 {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['numero', 'situacao', 'data', 'credor', 'nomeDevedor', 'documentoDevedor', 'titulo'];
+    displayedColumns = ['nomeGrupo', 'endereco', 'dataAbertura', 'rsg', 'tesoureiro', 'buttonInserir','buttonExcluir'];
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;
-
-    // @ViewChild('filter')
-    // filter: ElementRef;
 
     @ViewChild(MatSort)
     sort: MatSort;
@@ -49,19 +46,7 @@ export class GruposListasComponent implements OnInit, OnDestroy
     {
         this.dataSource = new FilesDataSource(this._gruposService, this.paginator, this.sort);
 
-        // fromEvent(this.filter.nativeElement, 'keyup')
-        //     .pipe(
-        //         takeUntil(this._unsubscribeAll),
-        //         debounceTime(150),
-        //         distinctUntilChanged()
-        //     )
-        //     .subscribe(() => {
-        //         if ( !this.dataSource )
-        //         {
-        //             return;
-        //         }
-        //         this.dataSource.filter = this.filter.nativeElement.value;
-        //     });
+       
     }
 
     ngOnDestroy(): void
@@ -166,26 +151,20 @@ export class FilesDataSource extends DataSource<any>
 
             switch ( this._matSort.active )
             {
-                case 'numero':
-                    [propertyA, propertyB] = [a.numero, b.numero];
+                case 'nomeGrupo':
+                    [propertyA, propertyB] = [a.nomeGrupo, b.nomeGrupo];
                     break;
-                case 'situacao':
-                    [propertyA, propertyB] = [a.situacao, b.situacao];
+                case 'endereco':
+                    [propertyA, propertyB] = [a.endereco, b.endereco];
                     break;
-                case 'data':
-                    [propertyA, propertyB] = [a.data, b.data];
+                case 'dataAbertura':
+                    [propertyA, propertyB] = [a.dataAbertura, b.dataAbertura];
                     break;
-                case 'credor':
-                    [propertyA, propertyB] = [a.credor, b.credor];
+                case 'rsg':
+                    [propertyA, propertyB] = [a.rsg, b.rsg];
                     break;
-                case 'nomeDevedor':
-                    [propertyA, propertyB] = [a.nomeDevedor, b.nomeDevedor];
-                    break;
-                case 'documentoDevedor':
-                    [propertyA, propertyB] = [a.documentoDevedor, b.documentoDevedor];
-                    break;
-                case 'titulo':
-                    [propertyA, propertyB] = [a.titulo, b.titulo];
+                case 'tesoureiro':
+                    [propertyA, propertyB] = [a.tesoureiro, b.tesoureiro];
                     break;
             }
 

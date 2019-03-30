@@ -16,13 +16,11 @@ export class GruposInMemoryService extends ServicesInMemoryService
         {
             grupos.push(
             {  
-                'id': FuseUtils.generateGUID(),
-                'situacao': Math.floor(Math.random() * 6) + 1,
-                'data': Date.now(),
-                'credor': 'Teste ' + index,
-                'nomeDevedor': 'ABDRE INCORPORA ' + index,
-                'documentoDevedor': '10355909000116',
-                'numeroTitulo': '45201 ' + index
+                'nomeGrupo': 'Grupo só por hoje',
+                'dataAbertura': Date.now(),
+                'endereco': 'QNA 21, Tag. Centro ' + index,
+                'rsg': 'ABDRE INCORPORA ' + index,
+                'tesoureiro': 'Anderson' + index
             });
         }
 
@@ -38,7 +36,7 @@ export class GruposInMemoryService extends ServicesInMemoryService
             
             super.add(obj).then((response) =>
             {
-                this.snackBar.open('Anuência cadastrada com sucesso.', null, { duration: 3000 });
+                this.snackBar.open('Grupo cadastrado com sucesso.', null, { duration: 3000 });
                 resolve(response);
             });
         });

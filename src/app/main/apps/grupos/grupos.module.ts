@@ -45,8 +45,6 @@ import { GruposInMemoryService } from './grupos-in-memory.service';
 import {NgxMaskModule} from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ThirdPartyServicesModule } from 'app/main/third-party-services/third-party-services.module';
-import { GruposSituacoesComponent } from './situacoes/grupos-situacoes.component';
-import { GruposListasNovasComponent } from './listas/novas/grupos-listas-novas.component';
 import { GruposListasComponent } from './listas/grupos-listas.component';
 
 const routes: Routes = [
@@ -57,10 +55,6 @@ const routes: Routes = [
     {
         path     : 'cadastrar',
         component: GruposCadastrarEditarComponent
-    },
-    {
-        path     : ':situacao',
-        component: GruposComponent,
     }
 ];
 
@@ -70,10 +64,8 @@ const routes: Routes = [
         GruposCadastrarEditarComponent,
         GruposFormComponent,
 
-        GruposListasComponent,
-        GruposListasNovasComponent,
+        GruposListasComponent
         
-        GruposSituacoesComponent
     ],
     imports        : [
         RouterModule.forChild(routes),

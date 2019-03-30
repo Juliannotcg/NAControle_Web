@@ -6,52 +6,39 @@
             [@animateStagger]="{value:'50'}"
             fusePerfectScrollbar>
 
-    <ng-container matColumnDef="numero">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Número</mat-header-cell>
+    <ng-container matColumnDef="nomeGrupo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nome do grupo</mat-header-cell>
         <mat-cell *matCellDef="let grupo">
-            <p class="text-truncate">{{grupo.id}}</p>
+            <p class="text-truncate">{{grupo.nomeGrupo}}</p>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="situacao">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Situação</mat-header-cell>
-        <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-sm>
-            <grupoNa-grupos-situacoes [situacao]="grupo.situacao"></grupoNa-grupos-situacoes>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="data">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+    <ng-container matColumnDef="endereco">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Endereço</mat-header-cell>
         <mat-cell *matCellDef="let grupo">
-            <p class="text-truncate">{{grupo.data | date:'dd/MM/yyyy'}}</p>
+            <p class="text-truncate">{{grupo.endereco}}</p>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="credor">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-md>Credor</mat-header-cell>
-        <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-md>
-            <p class="text-truncate">{{grupo.credor}}</p>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="nomeDevedor">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Nome Devedor</mat-header-cell>
-        <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-sm>
-            <p class="text-truncate">{{grupo.nomeDevedor}}</p>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="documentoDevedor">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Documento Devedor</mat-header-cell>
+    <ng-container matColumnDef="dataAbertura">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data abertura</mat-header-cell>
         <mat-cell *matCellDef="let grupo">
-            <p class="text-truncate">{{grupo.documentoDevedor}}</p>
+            <p class="text-truncate">{{grupo.dataAbertura | date:'dd/MM/yyyy'}}</p>
         </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="titulo">
-        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Título</mat-header-cell>
+  
+    <ng-container matColumnDef="rsg">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Rsg</mat-header-cell>
         <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-sm>
-            <p class="text-truncate">{{grupo.numeroTitulo}}</p>
+            <p class="text-truncate">{{grupo.rsg}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tesoureiro">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Tesoureiro</mat-header-cell>
+        <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-sm>
+            <p class="text-truncate">{{grupo.tesoureiro}}</p>
         </mat-cell>
     </ng-container>
 
@@ -61,6 +48,31 @@
                 class="grupo"
                 matRipple>
     </mat-row>
+
+        <!-- Buttons Column -->
+        <ng-container cdkColumnDef="buttonInserir">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
+                <div fxFlex="row"fxLayoutAlign ="space-around">
+                    <button mat-icon-button (click)="delete(orgaoEmissor)" class="">
+                        <mat-icon matTooltip="Cadastrar reunião">add_circle_outline</mat-icon>
+                    </button>
+                </div>
+    
+            </mat-cell>
+        </ng-container>
+
+        <!-- Buttons Column -->
+        <ng-container cdkColumnDef="buttonExcluir">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+                <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
+                    <div fxFlex="row" fxLayoutAlign="flex-end">
+                        <button mat-icon-button  class="">
+                            <mat-icon  matTooltip="Excluir">delete</mat-icon>
+                    </button>
+                </div>
+            </mat-cell>
+        </ng-container>
 
 </mat-table>
 

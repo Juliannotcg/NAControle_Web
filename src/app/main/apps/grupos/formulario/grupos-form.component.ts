@@ -65,7 +65,11 @@ export class GruposFormComponent implements OnInit
     ngOnInit(): void
     {        
         this.form.addControl('id', new FormControl(this.grupo.id));
-        this.form.addControl('nome', new FormControl(this.grupo.nome));
+        this.form.addControl('nomeGrupo', new FormControl(this.grupo.nomeGrupo));
+        this.form.addControl('endereco', new FormControl(this.grupo.endereco));
+        this.form.addControl('dataAbertura', new FormControl(this.grupo.dataAbertura));
+        this.form.addControl('rsg', new FormControl(this.grupo.rsg));
+        this.form.addControl('tesoureiro', new FormControl(this.grupo.tesoureiro));
         this.form.addControl('latitude', new FormControl(this.grupo.latitude));
         this.form.addControl('longitude', new FormControl({ value: this.grupo.longitude, disabled: true }));
         this.form.addControl('label', new FormControl({ value: this.grupo.label, disabled: true }));
