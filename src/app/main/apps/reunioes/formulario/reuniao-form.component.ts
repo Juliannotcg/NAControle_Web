@@ -21,7 +21,6 @@ export interface Dias {
 })
 export class ReuniaoFormComponent extends FuseSetingsDefaultComponent implements OnInit {
 
-  dialogTitle: string;
   reuniaoForm: FormGroup;
   reuniaoFormErrors: any;
   action: string;
@@ -30,7 +29,7 @@ export class ReuniaoFormComponent extends FuseSetingsDefaultComponent implements
   fuseSettings: any;
   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
 
-  diasControl = new FormControl('', [Validators.required]);
+  //diasControl = new FormControl('', [Validators.required]);
   dias: Dias[] = [
     { value: 'segunda', viewValue: 'Segunda-Feira' },
     { value: 'terca', viewValue: 'Terça-Feira' },
@@ -55,7 +54,6 @@ export class ReuniaoFormComponent extends FuseSetingsDefaultComponent implements
 
     if (this.action === 'new') 
     {
-      this.dialogTitle = 'Cadastrar tipo de documento';
       this.reuniao = new Reuniao({});
     }
     

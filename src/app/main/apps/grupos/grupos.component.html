@@ -1,41 +1,45 @@
 <div id="grupos" class="page-layout carded fullwidth inner-scroll">
 
-        <!-- TOP BACKGROUND -->
-        <div class="top-bg accent"></div>
-        <!-- / TOP BACKGROUND -->
-    
-        <!-- CENTER -->
-        <div class="center">
-    
-            <!-- HEADER -->
-            <div class="header accent"
-                 fxLayout="column" fxLayoutAlign="center center"
-                 fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
-    
-                <!-- APP TITLE -->
-                <div class="logo mb-24 mb-md-0"
-                     fxLayout="row" fxLayoutAlign="start center">
-                    <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
-                        assignment
-                    </mat-icon>
-                    <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
-                        Grupos
-                    </span>
-                </div>
-                <!-- / APP TITLE -->
-    
-            </div>
-            <!-- / HEADER -->
-    
-            <!-- CONTENT CARD -->
+    <!-- TOP BACKGROUND -->
+    <div class="top-bg accent"></div>
+    <!-- / TOP BACKGROUND -->
 
-            <ng-container [ngSwitch]="situacao">
-    
-                <ng-container *ngSwitchCase="'novas'">
-                    <ng-container *ngTemplateOutlet="novas"></ng-container>
-                </ng-container>
-                
-                <!-- <ng-container *ngSwitchCase="'Recebidas'">
+    <!-- CENTER -->
+    <div class="center">
+
+        <!-- HEADER -->
+        <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+            <!-- APP TITLE -->
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                    assignment
+                </mat-icon>
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Grupos
+                </span>
+            </div>
+            <!-- / APP TITLE -->
+
+            <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="end end">
+                <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                    Comitê de Serviço de Área
+                </span>
+            </div>
+
+        </div>
+        <!-- / HEADER -->
+
+        <!-- CONTENT CARD -->
+
+        <ng-container [ngSwitch]="situacao">
+
+            <ng-container *ngSwitchCase="'novas'">
+                <ng-container *ngTemplateOutlet="novas"></ng-container>
+            </ng-container>
+
+            <!-- <ng-container *ngSwitchCase="'Recebidas'">
                     <ng-container *ngTemplateOutlet="toolbar"></ng-container>
                 </ng-container>
                 
@@ -54,21 +58,18 @@
                 <ng-container *ngSwitchCase="'Canceladas'">
                     <ng-container *ngTemplateOutlet="toolbar"></ng-container>
                 </ng-container> -->
-                
-                <ng-container *ngSwitchDefault>
-                    <ng-container *ngTemplateOutlet="todas"></ng-container>
-                </ng-container>
-            
+
+            <ng-container *ngSwitchDefault>
+                <ng-container *ngTemplateOutlet="todas"></ng-container>
             </ng-container>
-            <!-- / CONTENT CARD -->
-            
-        </div>
-        <!-- / CENTER -->
+
+        </ng-container>
+        <!-- / CONTENT CARD -->
+
+    </div>
+    <!-- / CENTER -->
 </div>
-    
+
 <ng-template #todas>
     <grupos-listas class="content-card"></grupos-listas>
 </ng-template>
-    
-
-

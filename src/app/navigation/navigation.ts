@@ -14,78 +14,85 @@ export const navigation: FuseNavigation[] = [
         children : 
         [
             {
-                id       : 'novas',
-                title    : 'Novas',
+                id       : 'grupos',
+                title    : 'Grupos',
                 type     : 'item',
-                icon     : 'new_releases',
-                url      : '/grupos/novas',
-                badge    : {
-                    title    : '25',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'indigo'
-                }
+                icon     : 'announcement',
+                url      : '/grupos/novas'
             },
             {
-                id       : 'recebidas',
-                title    : 'Recebidas',
-                type     : 'item',
-                icon     : 'call_received',
-                url      : '/grupos/recebidas',
-                badge    : {
-                    title    : '100',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'blue'
-                }
-            },
-            {
-                id       : 'aceitas',
-                title    : 'Aceitas',
-                type     : 'item',
-                icon     : 'beenhere',
-                url      : '/grupos/aceitas',
-                badge    : {
-                    title    : '1500',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'green-700'
-                }
-            },
-            {
-                id       : 'rejeitadas',
-                title    : 'Rejeitadas',
-                type     : 'item',
-                icon     : 'block',
-                url      : '/grupos/rejeitadas',
-                badge    : {
-                    title    : '1500',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'red-500'
-                }
-            },
-            {
-                id       : 'pagas',
-                title    : 'Pagas',
+                id       : 'tesouraria',
+                title    : 'Tesouraria',
                 type     : 'item',
                 icon     : 'monetization_on',
-                url      : '/grupos/pagas',
-                badge    : {
-                    title    : '2500',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'orange-800'
-                }
+                url      : '/grupos/recebidas'
             },
             {
-                id       : 'canceladas',
-                title    : 'Canceladas',
+                id       : 'relatorios',
+                title    : 'Relatorios',
                 type     : 'item',
-                icon     : 'check',
-                url      : '/grupos/canceladas',
-                badge    : {
-                    title    : '2500',
-                    translate: 'NAV.MAIL.BADGE',
-                    class    : 'grey-700'
-                }
+                icon     : 'beenhere',
+                url      : '/grupos/aceitas'
+            },
+            {
+                id       : 'reunioes',
+                title    : 'Reuniões',
+                type     : 'item',
+                icon     : 'block',
+                url      : '/grupos/rejeitadas'
+            },
+            {
+                id       : 'servidores',
+                title    : 'Servidores',
+                type     : 'item',
+                icon     : 'monetization_on',
+                url      : '/grupos/pagas'
+            }
+        ],
+    },
+    {
+        id       : 'subcomites',
+        title    : 'Sub-Comitês',
+        type     : 'collapsable',
+        icon     : 'swap_horiz',
+        children : 
+        [
+            {
+                id       : 'hi',
+                title    : 'Hospitais e instituições',
+                type     : 'item',
+                icon     : 'announcement',
+                url      : '/grupos/novas'
+            },
+            {
+                id       : 'ip',
+                title    : 'Informação ao público',
+                type     : 'item',
+                icon     : 'monetization_on',
+                url      : '/grupos/recebidas'
+            },
+            {
+                id       : 'la',
+                title    : 'Longo alcance',
+                type     : 'item',
+                icon     : 'beenhere',
+                url      : '/grupos/aceitas'
+            },
+            {
+                id       : 'lda',
+                title    : 'Linha de ajuda',
+                type     : 'item',
+                icon     : 'block',
+                url      : '/grupos/rejeitadas'
             },
         ],
+    },
+    {
+        id       : 'manuais',
+        title    : 'Manuais',
+        type     : 'item',
+        icon     : 'library_books',
+        url      : '/dashboard'
     },
     {
         id       : 'dashboard',

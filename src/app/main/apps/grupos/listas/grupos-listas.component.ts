@@ -50,6 +50,9 @@ export class GruposListasComponent implements OnInit, OnDestroy
     {
         this.dialogRef = this.dialog.open(ReuniaoFormComponent,
         {
+            height: '500px',
+            width: '500px',
+            
             autoFocus: false,
             panelClass: 'reuniaoFormComponent',
             data      : {
