@@ -9,23 +9,20 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FuseUtils } from '@fuse/utils';
 
-
-
-import { GruposInMemoryService } from '../grupos-in-memory.service';
-import { ReuniaoFormComponent } from '../../reunioes/formulario/reuniao-form.component';
+import { ReuniaoFormComponent } from '../formulario/reuniao-form.component';
 
 @Component(
 {
-    selector     : 'grupos-listas',
-    templateUrl  : './grupos-listas.component.html',
-    styleUrls    : ['./grupos-listas.component.scss'],
+    selector     : 'reuniao-listas',
+    templateUrl  : './reuniao-listas.component.html',
+    styleUrls    : ['./reuniao-listas.component.scss'],
     animations   : fuseAnimations,
     encapsulation: ViewEncapsulation.None
 })
-export class GruposListasComponent implements OnInit, OnDestroy
+export class ReuniaoListasComponent implements OnInit, OnDestroy
 {
     dataSource: FilesDataSource | null;
-    displayedColumns = ['nomeGrupo', 'endereco', 'dataAbertura', 'rsg', 'tesoureiro', 'buttonInserir','buttonExcluir'];
+    displayedColumns = ['Dia', 'HorarioInicio', 'HorarioFim', 'Secretario', 'aberta', 'buttonExcluir'];
 
     @ViewChild(MatPaginator)
     paginator: MatPaginator;
@@ -82,7 +79,7 @@ export class GruposListasComponent implements OnInit, OnDestroy
 
     ngOnInit(): void
     {
-        this.dataSource = new FilesDataSource(this._gruposService, this.paginator, this.sort);
+        this.dataSource = new FilesDataSource(this._reuniaoService, this.paginator, this.sort);
 
        
     }
@@ -102,14 +99,14 @@ export class FilesDataSource extends DataSource<any>
     private _filteredDataChange = new BehaviorSubject('');
 
     constructor(
-        private _gruposService: GruposInMemoryService,
+        private _gruposService: ReuniaoInMemoryService,
         private _matPaginator: MatPaginator,
         private _matSort: MatSort
     )
     {
         super();
 
-        this.filteredData = this._gruposService.objs;
+        this.filteredData = this._reuniaoService.objs;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -143,7 +140,7 @@ export class FilesDataSource extends DataSource<any>
     connect(): Observable<any[]>
     {
         const displayDataChanges = [
-            this._gruposService.onObjsChanged,
+            this._reuniaoService.onObjsChanged,
             this._matPaginator.page,
             this._filterChange,
             this._matSort.sortChange
@@ -151,7 +148,7 @@ export class FilesDataSource extends DataSource<any>
 
         return merge(...displayDataChanges).pipe(map(() => {
 
-                let data = this._gruposService.objs.slice();
+                let data = this._reuniaoService.objs.slice();
 
                 data = this.filterData(data);
 
@@ -189,20 +186,20 @@ export class FilesDataSource extends DataSource<any>
 
             switch ( this._matSort.active )
             {
-                case 'nomeGrupo':
-                    [propertyA, propertyB] = [a.nomeGrupo, b.nomeGrupo];
+                case 'dia':
+                    [propertyA, propertyB] = [a.dia, b.dia];
                     break;
-                case 'endereco':
-                    [propertyA, propertyB] = [a.endereco, b.endereco];
+                case 'horarioIncio':
+                    [propertyA, propertyB] = [a.horarioIncio, b.horarioIncio];
                     break;
-                case 'dataAbertura':
-                    [propertyA, propertyB] = [a.dataAbertura, b.dataAbertura];
+                case 'horarioFim':
+                    [propertyA, propertyB] = [a.horarioFim, b.horarioFim];
                     break;
-                case 'rsg':
-                    [propertyA, propertyB] = [a.rsg, b.rsg];
+                case 'secretario':
+                    [propertyA, propertyB] = [a.secretario, b.secretario];
                     break;
-                case 'tesoureiro':
-                    [propertyA, propertyB] = [a.tesoureiro, b.tesoureiro];
+                case 'aberta':
+                    [propertyA, propertyB] = [a.aberta, b.aberta];
                     break;
             }
 

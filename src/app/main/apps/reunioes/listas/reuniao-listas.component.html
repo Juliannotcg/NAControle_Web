@@ -1,0 +1,86 @@
+    
+
+<mat-table class="reuniao-listas"
+            #table [dataSource]="dataSource"
+            matSort
+            [@animateStagger]="{value:'50'}"
+            fusePerfectScrollbar>
+
+    <ng-container matColumnDef="dia">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Dia</mat-header-cell>
+        <mat-cell *matCellDef="let reuniao">
+            <p class="text-truncate">{{reuniao.dia}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="horarioInicio">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Horário de Inicio</mat-header-cell>
+        <mat-cell *matCellDef="let reuniao">
+            <p class="text-truncate">{{reuniao.horarioInicio}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="horarioFim">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Horário de Término</mat-header-cell>
+        <mat-cell *matCellDef="let reuniao">
+            <p class="text-truncate">{{reuniao.horarioFim}}</p>
+        </mat-cell>
+    </ng-container>
+
+  
+    <ng-container matColumnDef="rsg">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Rsg</mat-header-cell>
+        <mat-cell *matCellDef="let reuni" fxHide fxShow.gt-sm>
+            <p class="text-truncate">{{reuniao.horarioInicio}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tesoureiro">
+        <mat-header-cell *matHeaderCellDef mat-sort-header fxHide fxShow.gt-sm>Tesoureiro</mat-header-cell>
+        <mat-cell *matCellDef="let grupo" fxHide fxShow.gt-sm>
+            <p class="text-truncate">{{grupo.tesoureiro}}</p>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+    <mat-row *matRowDef="let grupo; columns: displayedColumns;"
+                class="grupo"
+                matRipple>
+    </mat-row>
+
+        <!-- Buttons Column -->
+        <ng-container cdkColumnDef="buttonInserir">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+            <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
+                <div fxFlex="row"fxLayoutAlign ="space-around">
+                    <button mat-icon-button (click)="newReuniao()" class="">
+                        <mat-icon matTooltip="Cadastrar reunião">add_circle_outline</mat-icon>
+                    </button>
+                </div>
+    
+            </mat-cell>
+        </ng-container>
+
+        <!-- Buttons Column -->
+        <ng-container cdkColumnDef="buttonExcluir">
+            <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
+                <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
+                    <div fxFlex="row" fxLayoutAlign="flex-end">
+                        <button mat-icon-button  (click)="edit()" class="">
+                            <mat-icon  matTooltip="Excluir">delete</mat-icon>
+                    </button>
+                </div>
+            </mat-cell>
+        </ng-container>
+
+</mat-table>
+
+<mat-paginator #paginator
+                [length]="dataSource.filteredData.length"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>    
+
+
