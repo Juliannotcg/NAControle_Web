@@ -5,6 +5,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { MatTabsModule, MatExpansionModule, MatIconModule } from '@angular/material';
 import { GruposModule } from '../apps/grupos/grupos.module';
 import { grupoNaComponentsComponent } from './components.component';
+import { ReuniaoModule } from '../apps/reunioes/reuniao.module';
 
 const routes: Routes = [
     {
@@ -28,7 +29,8 @@ const routes: Routes = [
         MatExpansionModule,
         MatIconModule,
 
-        GruposModule
+        GruposModule,
+        ReuniaoModule
 
     ],
     providers: []

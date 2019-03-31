@@ -54,7 +54,7 @@
             <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
             <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
                 <div fxFlex="row"fxLayoutAlign ="space-around">
-                    <button mat-icon-button (click)="delete(orgaoEmissor)" class="">
+                    <button mat-icon-button (click)="newReuniao()" class="">
                         <mat-icon matTooltip="Cadastrar reunião">add_circle_outline</mat-icon>
                     </button>
                 </div>
@@ -67,7 +67,7 @@
             <mat-header-cell *cdkHeaderCellDef></mat-header-cell>
                 <mat-cell *cdkCellDef="let orgaoEmissor" (click)="$event.stopPropagation()">
                     <div fxFlex="row" fxLayoutAlign="flex-end">
-                        <button mat-icon-button  class="">
+                        <button mat-icon-button  (click)="edit()" class="">
                             <mat-icon  matTooltip="Excluir">delete</mat-icon>
                     </button>
                 </div>
@@ -82,3 +82,5 @@
                 [pageSize]="10"
                 [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>    
+
+

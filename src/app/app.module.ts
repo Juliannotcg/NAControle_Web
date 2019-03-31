@@ -18,6 +18,7 @@ import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
 import { Core21SharedModule } from 'core21/core21-shared.module';
+import { ReuniaoModule } from './main/apps/reunioes/reuniao.module';
 
 const appRoutes: Routes = [
     {
@@ -26,6 +27,10 @@ const appRoutes: Routes = [
     },
     {
         path        : 'grupos',
+        loadChildren: './main/components/components.module#grupoNaComponentsModule'
+    },
+    {
+        path        : 'reunioes',
         loadChildren: './main/components/components.module#grupoNaComponentsModule'
     },
     {
@@ -43,7 +48,7 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
-
+        ReuniaoModule,
         TranslateModule.forRoot(),
 
         // Material moment date module
@@ -64,7 +69,9 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        AppStoreModule
+        AppStoreModule,
+        ReuniaoModule
+
 
     ],
     bootstrap   : [

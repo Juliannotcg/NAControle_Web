@@ -1,0 +1,64 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="mat-accent m-0" [ngClass]="fuseConfig.layout.toolbar.background">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="text-truncate title dialog-title">{{dialogTitle}}</span>
+            <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0">
+
+        <form [formGroup]="reuniaoForm">
+
+            <mat-form-field>
+                <mat-label>Dia</mat-label>
+                <mat-select [formControl]="diasControl" required>
+                  <mat-option *ngFor="let dia of dias" [value]="dia.value">
+                    {{dia.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field fxFlex>
+                    <input name="horaInicial"
+                           formControlName="horaInicial"
+                           placeholder="Horário inicia"
+                           required>
+                </mat-form-field>
+            </div>
+
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+                <mat-form-field fxFlex>
+                    <input name="horaFim"
+                           formControlName="horaFim"
+                           placeholder="Horário final"
+                           required>
+                </mat-form-field>
+            </div>
+
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+                <mat-checkbox name="aberta" formControlName="aberta" [required]="action !== 'edit'" fxFlex>
+                    Ativo
+                </mat-checkbox>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between center">
+
+        <button *ngIf="action ==='edit'"
+                mat-raised-button
+                (click)="confirmUpdate()"
+                class="save-button mat-accent"
+                [disabled]="reunioesForm.invalid"
+                aria-label="SALVAR">
+            SALVAR
+        </button>
+
+    </div>
+</div>

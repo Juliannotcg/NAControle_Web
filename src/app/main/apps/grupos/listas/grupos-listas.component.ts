@@ -1,13 +1,18 @@
-import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
-import { BehaviorSubject, merge, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { FormGroup } from '@angular/forms';
+import { Observable, Subscription, BehaviorSubject, merge, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 
 import { fuseAnimations } from '@fuse/animations';
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { FuseUtils } from '@fuse/utils';
 
+
+
 import { GruposInMemoryService } from '../grupos-in-memory.service';
+import { ReuniaoFormComponent } from '../../reunioes/formulario/reuniao-form.component';
 
 @Component(
 {
@@ -30,13 +35,43 @@ export class GruposListasComponent implements OnInit, OnDestroy
 
     // Private
     private _unsubscribeAll: Subject<any>;
-
+    dialogRef: any;
+    
     constructor(
-        protected _gruposService: GruposInMemoryService
+        protected _gruposService: GruposInMemoryService,
+        public dialog: MatDialog,
     )
     {
         this._unsubscribeAll = new Subject();
     }
+
+
+    newReuniao()
+    {
+        this.dialogRef = this.dialog.open(ReuniaoFormComponent,
+        {
+            autoFocus: false,
+            panelClass: 'reuniaoFormComponent',
+            data      : {
+                action: 'new'
+            }
+        });
+
+        this.dialogRef
+            .afterClosed()
+            .pipe(takeUntil(this._unsubscribeAll))
+            .subscribe((response: FormGroup) => {
+                if ( !response )
+                {
+                    return;
+                }
+
+                //this.tipoDocumentoService.add(response.getRawValue());
+
+            });
+    }
+
+
 
     // -----------------------------------------------------------------------------------------------------
     // @ Lifecycle hooks

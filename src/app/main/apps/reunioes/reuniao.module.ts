@@ -36,36 +36,17 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { FuseConfirmDialogModule, FuseWidgetModule } from '@fuse/components';
 import { Core21SharedModule } from 'core21/core21-shared.module';
 import { getPtBrPaginatorTranslate } from 'core21/services/mat-translate/mat-paginator-translate';
-import { GruposComponent } from './grupos.component';
-import { GruposService } from './grupos.service';
-import { GruposCadastrarEditarComponent } from './cadastrar-editar/grupos-cadastrar-editar.component';
-import { GruposFormComponent } from './formulario/grupos-form.component';
-import { GruposInMemoryService } from './grupos-in-memory.service';
-
 import {NgxMaskModule} from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ThirdPartyServicesModule } from 'app/main/third-party-services/third-party-services.module';
-import { GruposListasComponent } from './listas/grupos-listas.component';
-import { ReuniaoFormComponent } from '../reunioes/formulario/reuniao-form.component';
+import { ReuniaoFormComponent } from './formulario/reuniao-form.component';
 
 const routes: Routes = [
-    {
-        path     : '',
-        component: GruposComponent,
-    },
-    {
-        path     : 'cadastrar',
-        component: GruposCadastrarEditarComponent
-    }
 ];
 
 @NgModule({
     declarations   : [
-        GruposComponent,
-        GruposCadastrarEditarComponent,
-        GruposFormComponent,
-        GruposListasComponent
-        
+        ReuniaoFormComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -112,16 +93,14 @@ const routes: Routes = [
         
     ],
     exports : [
-        GruposComponent,
+        ReuniaoFormComponent
         
-        GruposCadastrarEditarComponent
     ],
     providers      : [
-        GruposService,
-        GruposInMemoryService,
         { provide: MatPaginatorIntl, useValue: getPtBrPaginatorTranslate() }
-    ]
+    ],
+    entryComponents: [ReuniaoFormComponent]
 })
-export class GruposModule
+export class ReuniaoModule
 {
 }
