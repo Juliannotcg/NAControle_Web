@@ -11,43 +11,35 @@
 
     <form [formGroup]="reuniaoForm">
 
+        <mat-form-field>
+            <mat-label>Dias</mat-label>
+            <mat-select formControlName="dia" name="dia">
+                <mat-option *ngFor="let dia of dias" [value]="dia.value">
+                {{dia.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
-            <mat-form-field>
-                    <mat-label>Dias</mat-label>
-                    <mat-select [(ngModel)]="selectedValue" name="dia">
-                      <mat-option *ngFor="let dia of dias" [value]="dia.value">
-                        {{dia.viewValue}}
-                      </mat-option>
-                    </mat-select>
-            </mat-form-field>
-
+        <mat-form-field>
             <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-                    <mat-label>Secretario</mat-label>
-                    <input matInput name="horaInicial" formControlName="horaInicial" placeholder="Horário inicia" required>
-                </div>
-
+                <mat-label>Secretario</mat-label>
+                <input matInput name="secretario" formControlName="secretario" placeholder="Secretario" required>
+            </div>
+        </mat-form-field>
      
-
-        <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-            <mat-label>Horário de início</mat-label>
-            <input matInput name="horaInicial" formControlName="horaInicial" placeholder="Horário inicia" required>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
-            <mat-form-field fxFlex>
-                <input name="horaFim" formControlName="horaFim" placeholder="Horário final" required>
-            </mat-form-field>
-        </div>
+        <mat-form-field>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+                <mat-label>Horário de início</mat-label>
+                <input matInput name="horarioInicio" formControlName="horarioInicio" placeholder="Horário de início" required>
+            </div>
+        </mat-form-field>
+     
+        <mat-form-field>
+            <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+                <mat-label>Horário final</mat-label>
+                <input matInput name="horarioFim" formControlName="horarioFim" placeholder="Horário final" required>
+            </div>
+        </mat-form-field>
 
         <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
             <mat-checkbox name="aberta" formControlName="aberta" [required]="action !== 'edit'" fxFlex>
