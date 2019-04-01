@@ -10,6 +10,7 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { FuseUtils } from '@fuse/utils';
 
 import { ReuniaoFormComponent } from '../formulario/reuniao-form.component';
+import { ReuniaoInMemoryService } from '../reuniao-in-memory.service';
 
 @Component(
 {
@@ -35,7 +36,7 @@ export class ReuniaoListasComponent implements OnInit, OnDestroy
     dialogRef: any;
     
     constructor(
-        protected _gruposService: GruposInMemoryService,
+        protected _reuniaoService: ReuniaoInMemoryService,
         public dialog: MatDialog,
     )
     {
@@ -99,7 +100,7 @@ export class FilesDataSource extends DataSource<any>
     private _filteredDataChange = new BehaviorSubject('');
 
     constructor(
-        private _gruposService: ReuniaoInMemoryService,
+        private _reuniaoService: ReuniaoInMemoryService,
         private _matPaginator: MatPaginator,
         private _matSort: MatSort
     )

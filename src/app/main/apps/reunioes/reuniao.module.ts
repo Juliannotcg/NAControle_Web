@@ -40,13 +40,19 @@ import {NgxMaskModule} from 'ngx-mask';
 import { NgxCurrencyModule } from 'ngx-currency';
 import { ThirdPartyServicesModule } from 'app/main/third-party-services/third-party-services.module';
 import { ReuniaoFormComponent } from './formulario/reuniao-form.component';
+import { ReuniaoService } from './reuniao.service';
+import { ReuniaoInMemoryService } from './reuniao-in-memory.service';
+import { ReuniaoComponent } from './reuniao.component';
+import { ReuniaoListasComponent } from './listas/reuniao-listas.component';
 
 const routes: Routes = [
 ];
 
 @NgModule({
     declarations   : [
-        ReuniaoFormComponent
+        ReuniaoFormComponent,
+        ReuniaoComponent,
+        ReuniaoListasComponent
     ],
     imports        : [
         RouterModule.forChild(routes),
@@ -97,6 +103,8 @@ const routes: Routes = [
         
     ],
     providers      : [
+        ReuniaoService,
+        ReuniaoInMemoryService,
         { provide: MatPaginatorIntl, useValue: getPtBrPaginatorTranslate() }
     ],
     entryComponents: [ReuniaoFormComponent]
