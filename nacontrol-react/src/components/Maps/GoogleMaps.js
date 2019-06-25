@@ -6,7 +6,21 @@ export class GoogleMaps extends Component {
   state = {
     activeMarker: {},
     selectedPlace: {},
-    showingInfoWindow: false
+    showingInfoWindow: false,
+    dadosGrupo: {
+      nome: null,
+      endereco: {
+        logradouro: null,
+        lote: null,
+        rua: null,
+        quadra: null,
+        cep: null,
+        cidade: null,
+        uf: null,
+        latitude: null,
+        longitude: null,
+      }
+    }
   };
 
   onMarkerClick = (props, marker) =>
@@ -14,20 +28,6 @@ export class GoogleMaps extends Component {
     activeMarker: marker,
     selectedPlace: props,
     showingInfoWindow: true,
-    dadosGrupo: {
-        nome: null,
-        endereco: {
-          logradouro: null,
-          lote: null,
-          rua: null,
-          quadra: null,
-          cep: null,
-          cidade: null,
-          uf: null,
-          latitude: null,
-          longitude: null,
-        }
-    }
   });
 
   onMapClicked = () => {
