@@ -13,7 +13,21 @@ export class GoogleMaps extends Component {
   this.setState({
     activeMarker: marker,
     selectedPlace: props,
-    showingInfoWindow: true
+    showingInfoWindow: true,
+    dadosGrupo: {
+        nome: null,
+        endereco: {
+          logradouro: null,
+          lote: null,
+          rua: null,
+          quadra: null,
+          cep: null,
+          cidade: null,
+          uf: null,
+          latitude: null,
+          longitude: null,
+        }
+    }
   });
 
   onMapClicked = () => {
