@@ -42,13 +42,12 @@ export class GoogleMaps extends Component {
     return (
       <Map google={this.props.google} zoom={14}>
 
-        {this.state.grupos.map((value) => {
-
+        {this.state.grupos.forEach(element => {
           <Marker
-            onClick={this.onMarkerClick}
-            name={value.nome}
-            position={{ lat: value.endereco.latitude, lng: value.endereco.latitude }}
-            title="The marker`s title will appear as a tooltip." />
+          onClick={this.onMarkerClick}
+          name={element.nome}
+          position={{ lat: element.endereco.latitude, lng: element.endereco.latitude }}
+          title="The marker`s title will appear as a tooltip." />
 
         })}
 
