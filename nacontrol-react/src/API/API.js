@@ -50,7 +50,7 @@ class API {
 
         static get(resource) {
 
-            return fetch(" " + resource)
+            return fetch("https://localhost:44399/api/Grupo/" + resource)
                 .then(lerComoJson)
                 .then(interpretarResposta)
         }

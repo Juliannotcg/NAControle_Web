@@ -17,7 +17,7 @@ export class GoogleMaps extends Component {
 }
 
   buscar() {
-    API.grupo.get("/grupos")
+    API.grupo.get("grupos")
       .then(gruposRetorno => {
         this.setState({ grupos: gruposRetorno })
       });
