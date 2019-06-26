@@ -21,8 +21,6 @@ export class GoogleMaps extends Component {
    // this.buscar = this.buscar.bind(this);
 }
 
-
-
 componentDidMount = () => {
   this.setState({
     grupos: [{
@@ -71,22 +69,13 @@ componentDidMount = () => {
           {
             grupos.map(marker =>
             <Marker 
+             onClick={this.onMarkerClick}
               key={marker.id} 
               title={marker.name}
               position={{ lat: marker.latitude, lng: marker.longitude }}
             />
             )
           }
-
-
-        {/* {this.state.grupos.forEach(element => {
-          <Marker
-          onClick={this.onMarkerClick}
-          name={element.nome}
-          position={{ lat: element.endereco.latitude, lng: element.endereco.latitude }}
-          title="The marker`s title will appear as a tooltip." />
-
-        })} */}
 
         <InfoWindow
           marker={this.state.activeMarker}
