@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import API from './API/API';
+
+
+const grupo = {
+  id: 1,
+  name: "Teste"
+};
 
 export class GoogleMaps extends Component {
   constructor(props) {
@@ -13,15 +18,35 @@ export class GoogleMaps extends Component {
       grupos: []
     };
 
-    this.buscar = this.buscar.bind(this);
+   // this.buscar = this.buscar.bind(this);
 }
 
-  buscar() {
-    API.grupo.get("/grupos")
-      .then(gruposRetorno => {
-        this.setState({ grupos: gruposRetorno })
-      });
-  }
+
+
+componentDidMount = () => {
+  this.setState({
+    grupos: [{
+      id: 1,
+      name: "Teste",
+      latitude: 37.774929,
+      longitude: -122.419416
+    },
+    {
+      id: 2,
+      name: "23",
+      latitude: -15.7941,
+      longitude: -47.8825
+    }]
+  });
+} 
+
+
+  // buscar() {
+  //   API.grupo.get("/grupos")
+  //     .then(gruposRetorno => {
+  //       this.setState({ grupos: gruposRetorno })
+  //     });
+  // }
 
   onMarkerClick = (props, marker) =>
     this.setState({
@@ -39,17 +64,29 @@ export class GoogleMaps extends Component {
   };
 
   render() {
+    const { grupos } = this.state;
     return (
       <Map google={this.props.google} zoom={14}>
+        
+          {
+            grupos.map(marker =>
+            <Marker 
+              key={marker.id} 
+              title={marker.name}
+              position={{ lat: marker.latitude, lng: marker.longitude }}
+            />
+            )
+          }
 
-        {this.state.grupos.forEach(element => {
+
+        {/* {this.state.grupos.forEach(element => {
           <Marker
           onClick={this.onMarkerClick}
           name={element.nome}
           position={{ lat: element.endereco.latitude, lng: element.endereco.latitude }}
           title="The marker`s title will appear as a tooltip." />
 
-        })}
+        })} */}
 
         <InfoWindow
           marker={this.state.activeMarker}
