@@ -20,20 +20,6 @@ class App extends Component {
     this.mostrarMensagemErro = this.mostrarMensagemErro.bind(this);
     this.buscarInstalacoes = this.buscarInstalacoes.bind(this);
 }
-  
-
-  buscar() {
-    this.setState({ mainLoading: true });
-
-    API.Infraestrutura.post("/infraestrutura/busca", this.state.filtro)
-    .then(infraestruturas => {
-        this.setState({ infraestruturas: infraestruturas, mainLoading: false })
-    }, (evt) => this.mostrarMensagemErro({ mainLoading: false }, evt));
-}
-  
-  
-  
-  
   render() {
     return (
       <div className="App">

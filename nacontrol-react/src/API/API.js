@@ -11,9 +11,9 @@ const interpretarResposta = json => {
 }
 
 class API {
-    static user = class {
+    static grupo = class {
         static post(resource, data) {
-            return fetch(process.env.REACT_APP_API_URL + resource, {
+            return fetch(" " + resource, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json-patch+json'
@@ -27,7 +27,7 @@ class API {
 
 
         static put(resource, data) {
-            return fetch(process.env.REACT_APP_API_URL + resource, {
+            return fetch(" " + resource, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json-patch+json'
@@ -41,7 +41,7 @@ class API {
 
 
         static delete(resource) {
-            return fetch(process.env.REACT_APP_API_URL + resource, {
+            return fetch(" URL" + resource, {
                 method: "DELETE"
             })
                 .then(lerComoJson)
@@ -50,7 +50,7 @@ class API {
 
         static get(resource) {
 
-            return fetch(process.env.REACT_APP_API_URL + resource)
+            return fetch(" " + resource)
                 .then(lerComoJson)
                 .then(interpretarResposta)
         }
