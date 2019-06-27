@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
-
-const grupo = {
-  id: 1,
-  name: "Teste"
-};
+import API from '../../API/API';
 
 export class GoogleMaps extends Component {
   constructor(props) {
@@ -18,39 +13,31 @@ export class GoogleMaps extends Component {
       grupos: []
     };
 
-   // this.buscar = this.buscar.bind(this);
-}
+    this.buscar = this.buscar.bind(this);
+  }
 
 
-componentDidMount = () => {
-  this.setState({
-    grupos: [{
-      id: 1,
-      name: "Teste",
-      latitude: 37.774929,
-      longitude: -122.419416
-    },
-    {
-      id: 2,
-      name: "23",
-      latitude: -15.7941,
-      longitude: -47.8825
-    }]
-  });
-} 
-
-  // buscar() {
-  //   API.grupo.get("/grupos")
-  //     .then(gruposRetorno => {
-  //       this.setState({ grupos: gruposRetorno })
-  //     });
-  // }
+  componentDidMount = () => {
+    this.buscar();
+  }
 
   buscar() {
-    API.grupo.get("grupos")
-      .then(gruposRetorno => {
-        this.setState({ grupos: gruposRetorno })
-      });
+    
+    fetch("https://localhost:44399/api/Grupo/grupos")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          grupos: result
+        });
+      },
+      (error) => {
+        this.setState({
+          error
+        });
+      }
+    )
+
   }
 
   onMarkerClick = (props, marker) =>
@@ -72,24 +59,24 @@ componentDidMount = () => {
     const { grupos } = this.state;
     return (
       <Map google={this.props.google} zoom={14}>
-        
-          {
-            grupos.map(marker =>
-            <Marker 
-             onClick={this.onMarkerClick}
-              key={marker.id} 
-              title={marker.name}
-              position={{ lat: marker.latitude, lng: marker.longitude }}
+
+        {
+          grupos.map(marker =>
+            <Marker
+              onClick={this.onMarkerClick}
+              key={marker.rua}
+              title={marker.nome}
+              position={{ lat: marker.enderecoViewModel.latitude, lng: marker.enderecoViewModel.longitude }}
             />
-            )
-          }
+          )
+        }
 
         <InfoWindow
           marker={this.state.activeMarker}
           onClose={this.onInfoWindowClose}
           visible={this.state.showingInfoWindow}>
           <div>
-            <h1>{this.state.selectedPlace.name}</h1>
+            <h1>{this.state.selectedPlace.nome}</h1>
           </div>
         </InfoWindow>
 

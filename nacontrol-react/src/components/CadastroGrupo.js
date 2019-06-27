@@ -80,12 +80,6 @@ export default function CadastroGrupo (){
                 fullWidth
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-                label="O grupo está ativo."
-              />
-            </Grid>
           </Grid>
 
         </React.Fragment>

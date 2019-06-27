@@ -4,7 +4,6 @@ const lookUp = {};
 const lerComoJson = respostaHttp => respostaHttp.json();
 const interpretarResposta = json => {
     if (json.success) {
-        localStorage.setItem('json', json.data);
         return json.data;
     }
     return Promise.reject(json.errors);
@@ -49,7 +48,6 @@ class API {
         }
 
         static get(resource) {
-
             return fetch("https://localhost:44399/api/Grupo/" + resource)
                 .then(lerComoJson)
                 .then(interpretarResposta)
