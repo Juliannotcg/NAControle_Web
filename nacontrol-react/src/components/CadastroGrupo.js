@@ -27,7 +27,8 @@ export default function CadastroGrupo (){
                 required
                 id="dataFundacao"
                 name="dataFundacao"
-                label="Data de fundação"
+                type="date"
+                label="Data de abertura"
                 fullWidth
               />
             </Grid>
@@ -86,6 +87,7 @@ export default function CadastroGrupo (){
               />
             </Grid>
           </Grid>
+
         </React.Fragment>
       );
     }
