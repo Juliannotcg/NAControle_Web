@@ -21,7 +21,7 @@ export class GoogleMaps extends Component {
    // this.buscar = this.buscar.bind(this);
 }
 
-<<<<<<< HEAD
+
 componentDidMount = () => {
   this.setState({
     grupos: [{
@@ -39,21 +39,19 @@ componentDidMount = () => {
   });
 } 
 
-
   // buscar() {
   //   API.grupo.get("/grupos")
   //     .then(gruposRetorno => {
   //       this.setState({ grupos: gruposRetorno })
   //     });
   // }
-=======
+
   buscar() {
     API.grupo.get("grupos")
       .then(gruposRetorno => {
         this.setState({ grupos: gruposRetorno })
       });
   }
->>>>>>> 3508cac75032eefa9829417ecb8cf885ac749c81
 
   onMarkerClick = (props, marker) =>
     this.setState({
