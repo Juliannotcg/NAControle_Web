@@ -21,6 +21,7 @@ export default class CadastroGrupo extends Component() {
         <Typography variant="h6" gutterBottom>
           Cadastro de grupo
           </Typography>
+<<<<<<< HEAD
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             <TextField
@@ -30,6 +31,76 @@ export default class CadastroGrupo extends Component() {
               label="Nome do grupo"
               fullWidth
             />
+=======
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="firstName"
+                name="Nome do grupo"
+                label="Nome do grupo"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="dataFundacao"
+                name="dataFundacao"
+                type="date"
+                label="Data de abertura"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={3}>
+              <TextField
+                required
+                id="cep"
+                name="cep"
+                label="CEP"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                id="endereco"
+                name="endereco"
+                label="Endereço completo"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="cidade"
+                name="cidade"
+                label="Cidade"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField id="state" name="estado" label="Estado" fullWidth />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="latitude"
+                name="latitude"
+                label="Latitude"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                id="longitude"
+                name="longitude"
+                label="Longitude"
+                fullWidth
+              />
+            </Grid>
+>>>>>>> cf76d764a67821949fba2858a414e8efd3135b4f
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
